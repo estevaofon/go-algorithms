@@ -1,11 +1,12 @@
-package main
+package stack
 
-import "fmt"
-
+// Stack represents a stack of integers
 type Stack struct {
 	items []int
 }
 
+// Pop removes and returns the last element of the stack.
+// Panics if the stack is empty.
 func (s *Stack) Pop() int {
 	if len(s.items) == 0 {
 		panic("Empty slice")
@@ -15,29 +16,17 @@ func (s *Stack) Pop() int {
 	return last
 }
 
+// Push adds a value to the stack.
 func (s *Stack) Push(value int) {
 	s.items = append(s.items, value)
 }
 
+// IsEmpty returns true if the stack is empty.
 func (s *Stack) IsEmpty() bool {
 	return len(s.items) == 0
 }
 
+// Size returns the number of elements in the stack.
 func (s *Stack) Size() int {
 	return len(s.items)
-}
-
-func main() {
-	stack := Stack{}
-	stack.Push(1)
-	stack.Push(2)
-	stack.Push(3)
-	isEmpty := stack.IsEmpty()
-	fmt.Println("Is empty:", isEmpty)
-	fmt.Println(stack.items)
-	last := stack.Pop()
-	fmt.Println("Removed element:", last)
-	fmt.Println(stack.items)
-	size := stack.Size()
-	fmt.Println("Stack size:", size)
 }
